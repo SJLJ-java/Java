@@ -1,0 +1,55 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.math.*;
+public class CalcMkII {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String equation;
+        while(true){
+        System.out.println("What would you like to calculate?");
+        equation = input.nextLine();
+        System.out.println("1. Big number mode");
+        System.out.println("2. Decimal mode");
+        if(input.nextInt() == 1){
+        try{
+        try{
+        if (equation.contains("+")) {
+            String firstPart = equation.substring(0, equation.indexOf("+"));
+            String secondPart = equation.substring(equation.indexOf("+"));
+            System.out.println(BigInteger.valueOf(Long.valueOf(firstPart.replaceAll("\\s+","")) + Long.valueOf(secondPart.replaceAll("\\s+",""))));
+        }
+        else if (equation.contains("*")) {
+            String firstPart = equation.substring(0, equation.indexOf("*"));
+            String secondPart = equation.substring(equation.indexOf("*") + 1);
+            System.out.println(BigInteger.valueOf(Long.valueOf(firstPart.replaceAll("\\s+","")) * Long.valueOf(secondPart.replaceAll("\\s+",""))));
+        }
+        else if (equation.contains("/")) {
+            String firstPart = equation.substring(0, equation.indexOf("/"));
+            String secondPart = equation.substring(equation.indexOf("/") + 1);
+            System.out.println(BigInteger.valueOf(Long.valueOf(firstPart.replaceAll("\\s+","")) / Integer.parseInt(secondPart.replaceAll("\\s+",""))));
+        }
+        else if (equation.contains("-")) {
+            String firstPart = equation.substring(0, equation.indexOf("-"));
+            String secondPart = equation.substring(equation.indexOf("-") + 1);
+            System.out.println(BigInteger.valueOf((Long.valueOf(firstPart.replaceAll("\\s+","")) - Long.valueOf(secondPart.replaceAll("\\s+","")))));
+        }
+        else if (equation.contains("!")) {
+            String firstPart = equation.substring(0, equation.indexOf("!"));
+            BigInteger b = BigInteger.valueOf(Long.valueOf(firstPart));
+            Long i = b.longValue();
+            while(i > 1){
+                i--;
+                b = b.multiply(BigInteger.valueOf(i));
+                
+            }
+           System.out.println(b);
+        }
+        else{for(int i = 100000; i > 1; i--){System.out.print("Bad ");} System.exit(0);}
+    }
+    catch(NumberFormatException e){for(int i = 100000; i > 1; i--){System.out.print("Bad ");} System.exit(0);}       
+    }
+    catch(InputMismatchException e){for(int i = 100000; i > 1; i--){System.out.print("Bad ");} System.exit(0);}
+    }
+}   
+}
+}

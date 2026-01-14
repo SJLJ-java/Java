@@ -1,0 +1,242 @@
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.Random;
+import java.util.ArrayList;
+public class Main{
+    public static void main(String[] args) throws InterruptedException{
+     Scanner input = new Scanner(System.in);
+     int more = 0;
+     int a=1;
+     int b=2;
+     boolean any = true;
+     ArrayList<String> notes = new ArrayList<String>();
+     int numNotes = 0;
+     boolean noteTakenTrue = false;
+     int strikes = 0;
+     System.out.println("Hello!");
+     System.out.println("");
+     System.out.println("What is your name? (No_Spaces_Please)");
+     
+     String name = input.next();
+     if(name.length() > 25){
+        System.out.println("Why do people constantly do this  to me? Get out.");
+        System.exit(0);
+         
+     }
+     else if(name.equalsIgnoreCase("nope") || name.equalsIgnoreCase("no")){
+        System.out.println("OK then...");
+        System.exit(0);
+     }
+     
+     else if(name.equalsIgnoreCase("peace")){System.out.println("Welcome father.");}
+     else System.out.println("Welcome to my java program " + name + "!");
+     System.out.println(" ");
+     
+     System.out.println("What would you like to do?");
+     
+     while(more == 0){
+    System.out.println(" ");       
+    System.out.println("1. Answer my Question");
+    System.out.println("2. Calculate");
+    System.out.println("3. Notes");
+    String what = input.next();
+     
+    if(what.equals("1")){
+        System.out.println("Do you like turtles?");
+        String yes = input.next();
+        while(!yes.equalsIgnoreCase("yes")){
+        System.out.println("Oops, try again");
+            String S = input.next();
+            if(S.equals("yes")){break;}
+            
+        }
+            System.out.println(" ");
+            System.out.println("Good");
+        }
+     
+    else if(what.equals("2")){
+        System.out.println(" ");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        System.out.println("5. Exponetiation");
+        System.out.println("Any other number will exit");
+        int calc = input.nextInt();
+        
+        if(calc == 1){
+            System.out.println("Adding");
+            int num1 = input.nextInt();
+            System.out.println("And");
+            int num2 = input.nextInt();
+            System.out.println(num1 + num2);
+        }
+        
+        if(calc == 2){
+            System.out.println("Subtracting");
+            int num1 = input.nextInt();
+            System.out.println("And");
+            int num2 = input.nextInt();
+            System.out.println(num1 - num2);
+        }
+        
+        if(calc == 3){
+            System.out.println("Multiplying");
+            int num1 = input.nextInt();
+            System.out.println("And");
+            int num2 = input.nextInt();
+            System.out.println(num1 * num2);
+        }
+        
+        if(calc == 4){
+            System.out.println("Dividing");
+            int num1 = input.nextInt();
+            System.out.println("And");
+            int num2 = input.nextInt();
+            if(num2 == 0){System.out.println("Why did you do this? Get out of my script.");}
+            System.exit(0);
+            System.out.println(num1 / num2);
+        }
+        
+        if(calc == 5){
+            System.out.println("Exponentiating");
+            int num1 = input.nextInt();
+            System.out.println("And");
+            int num2 = input.nextInt();
+            System.out.println(Math.pow(num1, num2));
+        }
+        
+        else{
+        strikes++;
+        if(strikes == 3){
+            System.out.println("Now you've done it.");
+            Thread.sleep(1000);
+            System.out.println("3");
+            Thread.sleep(1000);
+            System.out.println("2");
+            Thread.sleep(1000);
+            System.out.println("1");
+            Thread.sleep(1000);
+            for(int i = 0; i<1000; i++){
+            System.out.println("why");
+        }
+        }
+        System.out.println("Anything else?");
+        String anything = input.next();
+        
+        while(true){
+        if(anything.equalsIgnoreCase("yes")) {
+            more = 0;
+            break;
+        }
+        
+        else if(anything.equalsIgnoreCase("no")) {
+            System.exit(0);
+        }
+        
+        else{
+    System.out.println("It's a yes or no question stupid.");
+        strikes++;
+        if(strikes == 3){
+            System.out.println("Now you've done it.");
+            Thread.sleep(1000);
+            System.out.println("3");
+            Thread.sleep(1000);
+            System.out.println("2");
+            Thread.sleep(1000);
+            System.out.println("1");
+            Thread.sleep(1000);
+            for(int i = 0; i<1000; i++){
+            System.out.println("why");
+        }
+        }
+            String S = input.next();
+            if(S.equalsIgnoreCase("yes")){break;}
+            else if(S.equalsIgnoreCase("no")){System.exit(0);}
+        }
+        } 
+     }
+    }
+    if(what.equals("3")){
+    while(true){  
+        System.out.println("Notes");
+        if(numNotes == 0){
+            System.out.println("You have no note yet.");
+            
+        } 
+        
+        else{
+            System.out.println("Your notes were:");
+            for(int i = numNotes - 1; i > -1; i--){
+            System.out.println(notes.get(i));}
+        }
+        
+        int noteWhat = 0;
+
+        System.out.println("1. New note");
+        System.out.println("2. Remove note");
+        System.out.println("3. Exit");
+        
+
+        noteWhat = input.nextInt();
+        if(noteWhat == 1){
+        System.out.println("What would you like to save?");
+        notes.add(numNotes, input.next());
+        numNotes ++;
+        }
+        
+        if(noteWhat == 2){
+            if(numNotes == 0){System.out.println("You have nothing to remove.");}
+            else{
+            notes.remove(input.nextInt() - 1);
+            numNotes --;
+            }
+        }
+        else if(noteWhat == 3){break;}
+        }
+     }
+     
+if(!what.equals("1") && !what.equals("2") && !what.equals("3")){
+         
+    System.out.println("Why can't you just pick one of the provided numbers?");
+         strikes++;
+        if(strikes == 3){
+            System.out.println("Now you've done it.");
+            Thread.sleep(1000);
+            System.out.println("3");
+            Thread.sleep(1000);
+            System.out.println("2");
+            Thread.sleep(1000);
+            System.out.println("1");
+            Thread.sleep(1000);
+            for(int i = 0; i<1000; i++){
+            System.out.println("why");
+            System.out.println("do");
+            System.out.println("you");
+            System.out.println("people");
+            System.out.println("do");
+            System.out.println("this");
+            System.out.println("to");
+            System.out.println("me");
+            System.out.println("");
+        }
+        }
+     
+     System.out.println("Now that you've annoyed me, do you want to leave?");
+     
+     String leave = input.next();
+     
+    
+     
+     if(leave.equals("yes")){System.exit(0);}
+     else if(leave.equals("no")){System.out.println("Whatever. Just don't do anything like that any more please.");
+         System.out.println("You might break something.");
+     }
+     else{
+         System.out.println("I'll take anything not a yes as no.");
+         
+     }
+     }
+     }
+}
+}
